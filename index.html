@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>D&D RPG game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="./assets/css/style.css" />
+</head>
+
+<body>
+
+    <div class="container">
+        <div>
+            <h1>RPG Game</h1>
+        </div>
+        <div class="row text-center justify-content-around" id ="allCreation">
+            <div class="col-4" id="characterCreation">
+                <h3>Choose your character</h3>
+                <div>
+                    <button type="button" class="btn btn-primary btn-lg" id="rogueAdd">Rogue</button>
+                    <button type="button" class="btn btn-primary btn-lg" id="wizAdd">Wizard</button>
+                    <button type="button" class="btn btn-primary btn-lg" id="fighterAdd">Fighter</button>
+                </div>
+            </div>
+
+            <div class="col-4 d-none" id="enemyCreation">
+                <h3 class="charCreate">Choose your enemy</h3>
+                <div>
+                    <button type="button" class="btn btn-secondary btn-lg" id="demon">Demon</button>
+                    <button type="button" class="btn btn-secondary btn-lg" id="abomination">Abomination</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="row-1">
+            <div class="col" id="PCs"></div>
+            <div class="col-2" id = "between"></div>
+            <div class="col" id="NPCs"></div>
+        </div>
+    </div>
+
+    <!-- Javascript Linking -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="./assets/javascript/logic.js"></script>
+</body>
+
+</html>
