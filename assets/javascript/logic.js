@@ -56,17 +56,18 @@ $(document).ready(function () {
 
     var player;
     var enemy;
+    var defeatedTypes = [];
 
     $("body").on("click", "#rogueAdd", function () {
         $("#PCs").empty();
-        player = new Player("Rogue", 10, 5, 2, "./assets/images/rogue.jpg", ["Attack", "Critical"]);
+        player = new Player("Rogue", 30, 5, 2, "./assets/images/rogue.jpg", ["Attack", "Critical"]);
         player.playerCard();
         $("#characterCreation").addClass("d-none");
         $("#enemyCreation").removeClass("d-none");
     });
     $("body").on("click", "#wizAdd", function () {
         $("#PCs").empty();
-        player = new Player("Wizard", 5, 10, 2, "http://via.placeholder.com/413x370", ["Attack", "fireball"]);
+        player = new Player("Wizard", 25, 10, 2, "./assets/images/wizard.jpg", ["Attack", "fireball"]);
         player.playerCard();
         $("#characterCreation").addClass("d-none");
         $("#enemyCreation").removeClass("d-none");
@@ -74,12 +75,12 @@ $(document).ready(function () {
     });
     $("body").on("click", "#fighterAdd", function () {
         $("#PCs").empty();
-        player = new Player("Fighter", 15, 2, 5, "http://via.placeholder.com/413x370", ["Attack", "smite"]);
+        player = new Player("Fighter", 45, 2, 5, "./assets/images/fighter.jpg", ["Attack", "smite"]);
         player.playerCard();
         $("#characterCreation").addClass("d-none");
         $("#enemyCreation").removeClass("d-none");
     });
-    $("body").on("click", "#demon", function () {
+    $("#enemyCreation").on("click", "#demon", function () {
         $("#NPCs").empty();
         enemy = new Enemy("Demon", 50, 2, 2, "./assets/images/demon.png");
         enemy.enemyCard();
@@ -88,17 +89,17 @@ $(document).ready(function () {
         player.arrAbilities.forEach(function (element) {
             $("#" + element).removeClass("disabled");
         });
-        // $("#allCreation").html($("<h3>").html("FIGHT!!"));
+        $("#allCreation").append($("<h3>").attr("id", "fight").html("FIGHT!!"));
     });
-    $("body").on("click", "#abomination", function () {
+    $("#enemyCreation").on("click", "#abomination", function () {
         $("#NPCs").empty();
-        enemy = new Enemy("Abomination", 30, 5, 10, "http://via.placeholder.com/413x370");
+        enemy = new Enemy("Abomination", 40, 5, 5, "./assets/images/abomination.jpg");
         enemy.enemyCard();
         $("#enemyCreation").addClass("d-none");
         player.arrAbilities.forEach(function (element) {
             $("#" + element).removeClass("disabled");
         });
-        // $("#allCreation").html($("<h3>").html("FIGHT!!"));
+        $("#allCreation").append($("<h3>").attr("id", "fight").html("FIGHT!!"));
     });
     $("#PCs").on("click", "#Attack", function (e) {
         enemy.updateHP(player.atk);
@@ -106,27 +107,39 @@ $(document).ready(function () {
         checkEnd();
     });
     $("#PCs").on("click", "#Critical", function (e) {
-        enemy.updateHP(player.atk*7);
+        enemy.updateHP(player.atk * 7);
         player.updateHP(enemy.atk);
         $("#Critical").addClass("disabled");
         checkEnd();
     });
     $("body").on("click", "#pLoss", function (e) {
         resetGameState();
+        $("#between").empty();
+    });
+    $("body").on("click", "#pWon", function (e) {
+        continueGameState();
+        $("#between").empty();
     });
 
     function checkEnd() {
         console.log(enemy.currentHp);
         if (enemy.currentHp <= 0) {
             $("#enemyImage").attr("src", "./assets/images/" + enemy.name.toLowerCase() + "Defeat.jpg");
+            $("#between").html($("<a>").addClass("btn btn-primary col mt-5").attr("id", "pWon").html("Victory!"));
+            defeatedTypes.push(enemy.name.toLowerCase());
+            disableAbilities();
         }
         if (player.currentHp <= 0) {
             $("#playerImage").attr("src", "./assets/images/" + player.name.toLowerCase() + "Defeat.jpg");
             $("#between").html($("<a>").addClass("btn btn-primary col mt-5").attr("id", "pLoss").html("Defeat!"));
-            player.arrAbilities.forEach(function (element) {
-                $("#" + element).addClass("disabled");
-            });
+            disableAbilities();
         }
+    }
+
+    function disableAbilities() {
+        player.arrAbilities.forEach(function (element) {
+            $("#" + element).addClass("disabled");
+        });
     }
 
     function resetGameState() {
@@ -135,6 +148,17 @@ $(document).ready(function () {
         $("#characterCreation").removeClass("d-none");
         $("#enemyCreation").addClass("d-none");
         $("#pLoss").remove();
+        $("#fight").remove();
+
+    }
+
+    function continueGameState() {
+        $("NPCs").empty();
+        $("#fight").remove();
+        $("#enemyCreation").removeClass("d-none");
+        defeatedTypes.forEach(function (element) {
+            $("#" + element).addClass("d-none");
+        });
     }
 
 
