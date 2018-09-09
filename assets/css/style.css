@@ -1,0 +1,77 @@
+h1{
+    font-family: "Permanent Marker", sans-serif;
+    font-size: 64px;
+    color: rgb(48, 83, 7);
+}
+h3{
+    font-family: "Amatic SC",sans-serif;
+    font-size: 44px;
+    color: rgb(117, 0, 0);
+    text-shadow: 1px 1px;
+}
+body{
+    background-image: url(../images/d10-d4-dice-279011.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.btn-secondary{
+    background-color: rgb(7, 199, 167);
+}
+
+.btn-primary {
+    padding: 15px 25px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: rgb(39, 65, 180);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #999;
+    margin-bottom: 15px;
+}
+  
+.btn-primary:hover {background-color: #3e8e41}
+  
+.btn-primary:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.card{
+    background-color: rgba(0,0,0,0);
+    border: none;
+}
+.card-body{
+    background-color: rgba(0,0,0,.5);
+}
+.card-title{
+    color: #fff;
+}
+
+#rogueAdd{
+    color: rgb(145, 8, 8);
+}
+
+#wizAdd{
+    color: rgb(255, 230, 0);
+}
+
+#fighterAdd{
+    color: rgb(0, 89, 255);
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -180%);
+    font-family: "Permanent Marker", sans-serif;
+    font-size: 34px;
+    color: rgb(77, 3, 3);
+    text-shadow: 1px 1px;
+}
